@@ -23,13 +23,13 @@ async def get_clipboard_data():
         try:
             all_cookies = document.cookie
             text_data = await js.navigator.clipboard.readText()
-	        pyscript.display("Cookies:\n"+all_cookies+"\nClipBoard:\n"+text_data)
+	        pyscript.display("Cookies:<br>"+all_cookies+"<br>ClipBoard:<br>"+text_data)
         except:
             pass
 
 pyscript.document.querySelector("#c").focus()
 get_clipboard_data_proxy = create_proxy(get_clipboard_data)
-pyscript.display("<h1>Data Found by clicking this page:<h1>\n\n")
+pyscript.display("Data Found by clicking this page:<p><br>")
 async def main():
     while True:
         try:
