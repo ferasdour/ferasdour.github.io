@@ -1,0 +1,27 @@
+site_name: test site
+theme: mkdocs
+repo_url: https://github.com/ferasdour/ferasdour.github.io
+docs_dir: Docs
+copyright: feemcotech
+use_directory_urls: true
+nav:
+  - index.md
+plugins:
+  - autorefs
+  - autolinks
+  - pub-obsidian:
+     obsidian_dir: Docs/.obsidian
+     templates_dir: Docs/_templates
+     backlinks:
+      enabled: false
+     callouts:
+      enabled: true
+      indentation: spaces
+     links:
+      wikilinks_enabled: true
+  - search
+  - pub-debugger
+  - pub-blog
+  - pub-social
+  - pub-meta
+  - pub-minifier
