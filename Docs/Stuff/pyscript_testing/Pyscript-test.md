@@ -2,7 +2,10 @@
 publish: true
 title: pyscript-test
 ---
-
+# What is this?
+Well, I wanted to embed something else, but instead, how about I just show you what pyscript can do and see if your detections catch it! :D
+## what?
+So pyscript is really pretty neat, but it seems like it's just pythonic commands for javascript and not really a python runtime, so that brings limitations. Even so, pretty fun because it's super easy to make less detectable ways of stealing cookies and clipboard data.
 
 <div id="c"></div>
 <script type="module" src="https://pyscript.net/releases/2025.2.1/core.js"></script>
