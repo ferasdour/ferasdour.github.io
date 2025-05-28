@@ -29,10 +29,14 @@ Lets see what we can do here:
 
 Did some playing with pyscript to see what I could do using python in a web browser. Long story short, basically javascript launched from python code. I say it like this because so much of it relies on javascript functionality forward and backward. The did several tests with it and my favorite has basically been using it as a mechanism to run xss attempts.
 
+Main project page: https://github.com/ferasdour/other-nonsense
+
 ## dns 
 [[dns]]
 
 Created a project to learn more languages, so in classic multi-lingual style, making a single project that uses multiple languages and mimics the techniques from each language. It's a simple idea, generate a file to send to a the target, the file grabs every file on the user's home directory, ship it over dns requests to a one-time generated connection with interactsh to become a data stealing malware. 
 
 This is only a proof of concept and not intended for malicious use, it's primary use is for learning and showcasing detection capabilities.
+
+Main project page: https://github.com/ferasdour/dns_exfil_controller
 
