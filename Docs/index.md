@@ -40,3 +40,8 @@ This is only a proof of concept and not intended for malicious use, it's primary
 
 Main project page: https://github.com/ferasdour/dns_exfil_controller
 
+## Automation Tools
+
+This is mostly just a collection of different simple scripts that I found a need for and was legally allowed to share (because of work agreements limiting what I could). So I have tools made with jupyter notebooks for controlling vms using libvirt/kvm, building containers from vms using ansible, a few simple bash scripts, and a few ansible tricks here and there.
+
+Main project page: https://github.com/ferasdour/automation_tools
