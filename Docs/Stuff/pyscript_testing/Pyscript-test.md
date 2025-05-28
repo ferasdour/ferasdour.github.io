@@ -13,12 +13,9 @@ title: pyscript-test
   <object id="object1" data="" />
 </div>
 <script >
-$(function() {
-  $("#object1").load(function() {
-    $(this).contents().find("#lemail_id").val("lemail_id")
-  });
-  $("#object1").attr('data', 'https://github.com/ferasdour/other-nonsense/blob/main/README.md');
-});
+fetch("https://github.com/ferasdour/other-nonsense/blob/main/README.md")
+      .then(response => response.text())
+      .then(data => document.getElementById('code').textContent = data)
 </script>
 </body>
 </html>
