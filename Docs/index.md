@@ -45,3 +45,8 @@ Main project page: https://github.com/ferasdour/dns_exfil_controller
 This is mostly just a collection of different simple scripts that I found a need for and was legally allowed to share (because of work agreements limiting what I could). So I have tools made with jupyter notebooks for controlling vms using libvirt/kvm, building containers from vms using ansible, a few simple bash scripts, and a few ansible tricks here and there.
 
 Main project page: https://github.com/ferasdour/automation_tools
+
+## References
+[[References]]
+
+I'm sure everyone would rather this be references to people or something, but nope this is references to things like notes about scripting, fun commands, basically it's a cheat sheet for myself. Hope you can find some joy from this too.
