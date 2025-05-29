@@ -164,6 +164,9 @@ swapon /swapfile
 <h4 id="start-local-python-server-to-pull-isos-instead-of-from-other-location_1">Start local python server (to pull isos, instead of from other location)</h4>
 <pre><code>tmux new-session -s webserver -d "python3 -m http.server --directory=/share/vms/images"
 </code></pre>
+<h4 id="site-update">Site update</h4>
+<pre><code>git add *; date=`date`; git commit -m "$date"; git branch -M main; git remote add origin git@github.com:ferasdour/ferasdour.github.io.git; git push origin main; mkdocs gh-deploy --force
+</code></pre>
 <h4 id="deb-repo">deb repo</h4>
 <pre><code>cp -R /var/cache/apt/archives/* /share/vms/images/debs/
 dpkg-scanpackages /share/vms/images/debs/ /dev/null | gzip -9c &gt; /share/vms/images/debs/Packages.gz
@@ -196,6 +199,21 @@ docker run -d --rm -p 4000:4000 -p 35729:35729 --name docker.io/de4js remnux/de4
 
 https://tungcsv.github.io/de4js/
 
+</code></pre>
+<h4 id="afl-such">afl &amp; such</h4>
+<pre><code>had to note this somewhere, dumb fuzzing, smart parameter finding:
+
+llm prompt: 
+generate 1000 possible command options for the linux command "apython". This is to be used as input for a fuzzer, so no need for explainations or usage, just give command arguments
+Ok, I'm ready to generate 1000 possible command options for "apython" to be used as input for a fuzzer. I'll focus on providing diverse command arguments without explanations or usage examples.
+
+Here are 1000 possible command options for "apython":
+
+1. apython -h
+...
+to fix that a little and create the required input files:
+n=1;for each in `sed s/"^[0-9a-zA-Z.]* apython "/""/g /tmp/test/inputlist`; do echo $each &gt;&gt; input/$n; n=$(($n+1)); done
+afl-fuzz  -m none -i input -o output -n -- /bin/apython -a @@
 </code></pre>
 <h4 id="jwt">JWT</h4>
 <pre><code>docker run -it --network "host" --rm -v "${PWD}:/tmp" -v "${HOME}/.jwt_tool:/root/.jwt_tool" docker.io/ticarpi/jwt_tool
