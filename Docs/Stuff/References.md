@@ -61,6 +61,10 @@ for i in `virsh list --all|grep -i .private|awk '{print $2}'`; do tmux new-sessi
 tmux new-session -s webserver -d "python3 -m http.server --directory=/share/vms/images"
 ```
 
+#### Site update
+```
+git add *; date=`date`; git commit -m "$date"; git branch -M main; git remote add origin git@github.com:ferasdour/ferasdour.github.io.git; git push origin main; mkdocs gh-deploy --force
+```
 #### deb repo 
 ```
 cp -R /var/cache/apt/archives/* /share/vms/images/debs/
