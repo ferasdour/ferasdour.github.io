@@ -9,6 +9,7 @@ nav:
 plugins:
   - autorefs
   - autolinks
+  - glightbox
   - pub-obsidian:
      obsidian_dir: Docs/.obsidian
      templates_dir: Docs/_templates
