@@ -111,6 +111,22 @@ https://tungcsv.github.io/de4js/
 
 ```
 
+#### afl & such
+```
+had to note this somewhere, dumb fuzzing, smart parameter finding:
+
+llm prompt: 
+generate 1000 possible command options for the linux command "apython". This is to be used as input for a fuzzer, so no need for explainations or usage, just give command arguments
+Ok, I'm ready to generate 1000 possible command options for "apython" to be used as input for a fuzzer. I'll focus on providing diverse command arguments without explanations or usage examples.
+
+Here are 1000 possible command options for "apython":
+
+1. apython -h
+...
+to fix that a little and create the required input files:
+n=1;for each in `sed s/"^[0-9a-zA-Z.]* apython "/""/g /tmp/test/inputlist`; do echo $each >> input/$n; n=$(($n+1)); done
+afl-fuzz  -m none -i input -o output -n -- /bin/apython -a @@
+```
 #### JWT
 
 ```
