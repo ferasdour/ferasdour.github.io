@@ -27,7 +27,7 @@ Lets see what we can do here:
 ## pyscript 
 [[Pyscript-test]]
 
-Did some playing with pyscript to see what I could do using python in a web browser. Long story short, basically javascript launched from python code. I say it like this because so much of it relies on javascript functionality forward and backward. The did several tests with it and my favorite has basically been using it as a mechanism to run xss attempts.
+Did some playing with pyscript to see what I could do using python in a web browser. Long story short, basically javascript launched from python code. I say it like this because so much of it relies on javascript functionality forward and backward. I did several tests with it and my favorite has basically been using it as a mechanism to run xss attempts.
 
 Main project page: https://github.com/ferasdour/other-nonsense
 
@@ -50,3 +50,5 @@ Main project page: https://github.com/ferasdour/automation_tools
 [[References]]
 
 I'm sure everyone would rather this be references to people or something, but nope this is references to things like notes about scripting, fun commands, basically it's a cheat sheet for myself. Hope you can find some joy from this too.
+
+Main project page:  https://ferasdour.github.io/Stuff/reference/
