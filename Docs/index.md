@@ -52,3 +52,7 @@ Main project page: https://github.com/ferasdour/automation_tools
 I'm sure everyone would rather this be references to people or something, but nope this is references to things like notes about scripting, fun commands, basically it's a cheat sheet for myself. Hope you can find some joy from this too.
 
 Main project page:  https://ferasdour.github.io/Stuff/reference/
+
+
+
+![[Pasted image 20250528195216.png]]
