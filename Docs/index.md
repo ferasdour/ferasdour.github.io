@@ -54,6 +54,4 @@ I'm sure everyone would rather this be references to people or something, but no
 Main project page:  https://ferasdour.github.io/Stuff/reference/
 
 
-![RandomHex](/Stuff/randomhex.png.png)
-
-![[Docs/Stuff/randomhex.png.png]]
+<img alt="RandomHex" src="Stuff/randomhex.png.png">
