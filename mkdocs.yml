@@ -13,6 +13,7 @@ plugins:
   - pub-obsidian:
      obsidian_dir: Docs/.obsidian
      templates_dir: Docs/_templates
+     img_lazy_loading: true
      backlinks:
       enabled: false
      callouts:
