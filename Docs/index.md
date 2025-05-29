@@ -55,3 +55,5 @@ Main project page:  https://ferasdour.github.io/Stuff/reference/
 
 
 ![RandomHex](/Stuff/randomhex.png.png)
+
+![[Docs/Stuff/randomhex.png.png]]
