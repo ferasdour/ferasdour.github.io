@@ -100,7 +100,7 @@ nmcli connection modify "MyConnection" connection.interface-name eth0
 ```
 git clone https://github.com/arkadiyt/bounty-targets-data
 
-pdtm -ia; pdtm -ua; for i in `grep -Eoh "(([a-zA-Z](-?[a-zA-Z0-9])*)\.)+[a-zA-Z]{2,}" bounty-targets-data/data/*.txt|sort -u`; do subfinder  -max-time 100 -silent -recursive -active -d $i |katana -hl -silent -nos -xhr -d 50  -jc -jsl -kf -ns -user-agent "" >> scrape-$i-log; done
+pdtm -ia; pdtm -ua; for i in `grep -Eoh "(([a-zA-Z](-?[a-zA-Z0-9])*)\.)+[a-zA-Z]{2,}" bounty-targets-data/data/*.txt|sort -u`; do subfinder -max-time 100 -silent -recursive -active -d $i |katana -hl -silent -nos -xhr -d 50  -jc -jsl -kf -ns -H "User-agent: " >> scrape-$i-log; done
 
 for i in `sort -u bounty-targets-data/data/domains.txt|grep -iE ".{3,}" `; do echo `docker run -it --rm -v $PWD/:/app/results waymore:latest waymore -i $i  -oU $i.links -oR /app/results/$i/`; done
 
