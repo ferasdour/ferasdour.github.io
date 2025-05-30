@@ -13,11 +13,12 @@ Some stuff people might want to access for jobs
 
 - [Linkedin](https://www.linkedin.com/in/j3ffre-f33mster/)
 - [HTB](https://app.hackthebox.com/profile/126513)
-- [online resume](https://rxresu.me/ferasdour/feemster-resume)
+- [Online Resume](https://rxresu.me/ferasdour/feemster-resume)
+- [Infosec exchange](https://infosec.exchange/@Ferasdour)
 ## Blog
 I occasionally do blog posts here and there
 
-- [Blogger blog](https://blog.feemcotech.solutions/)
+- [Blogger Blog](https://blog.feemcotech.solutions/)
 
 # Projects and such
 
