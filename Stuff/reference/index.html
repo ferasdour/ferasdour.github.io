@@ -187,9 +187,13 @@ nmcli con add type ethernet ifname eth0 ipv4.method shared con-name "internetSha
 <h2 id="pentesting-forensics">pentesting &amp; forensics</h2>
 <h3 id="bounty-targets">Bounty Targets</h3>
 <pre><code>git clone https://github.com/arkadiyt/bounty-targets-data
-pdtm -ia; pdtm -ua; for i in `grep -Eoh "(([a-zA-Z](-?[a-zA-Z0-9])*)\.)+[a-zA-Z]{2,}" bounty-targets-data/data*.txt|sort -u`; do subfinder  -max-time 100 -silent -recursive -active -d $i |katana -hl -silent -nos -xhr -d 50  -jc -jsl -kf -ns -user-agent "" &gt;&gt; scrape-$i-log; done
+
+pdtm -ia; pdtm -ua; for i in `grep -Eoh "(([a-zA-Z](-?[a-zA-Z0-9])*)\.)+[a-zA-Z]{2,}" bounty-targets-data/data/*.txt|sort -u`; do subfinder  -max-time 100 -silent -recursive -active -d $i |katana -hl -silent -nos -xhr -d 50  -jc -jsl -kf -ns -user-agent "" &gt;&gt; scrape-$i-log; done
+
 for i in `sort -u bounty-targets-data/data/domains.txt|grep -iE ".{3,}" `; do echo `docker run -it --rm -v $PWD/:/app/results waymore:latest waymore -i $i  -oU $i.links -oR /app/results/$i/`; done
+
 awk -F "," '{print $2}' */waymore_index.txt|awk -F "//" '{$1=$2=""; print $0}'|sed s/" "/"\/"/g|sed s/"\/\/"//g|sed s/"\/$"//g|sort -u
+
 grep -hEo "(http|https)://[a-zA-Z0-9./?=_%:-]*" scrape-*-log|sed s/"%5C$"//g|sed s/"%5C%5C$"//g|sort -u
 </code></pre>
 <h4 id="javascript-deobfuscate">Javascript Deobfuscate</h4>
