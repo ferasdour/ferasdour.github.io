@@ -310,6 +310,17 @@ google: storage.googleapis.com
     -s images/searchimages/debruinseq_notepad_Windows10_closeAndSpaced.png \
     -o /path/to/your/output.png
 </code></pre>
+<h4 id="wpscan">wpscan</h4>
+<pre><code>wpscan --rua --plugins-detection aggressive --plugins-version-detection aggressive -e ap,u,dbe,at,cb --proxy http://192.168.56.1:8080 --detection-mode aggressive --disable-tls-checks --throttle 1 --headers "X-HackerOne-Research: ferasdour" --url replaceme
+</code></pre>
+<h4 id="kerb-local-to-domain-creds">kerb local to domain creds</h4>
+<pre><code>https://www.linkedin.com/posts/giulio-pierantoni-036792178_are-you-the-local-admin-of-a-domain-host-activity-7338264538112319490-APYu?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACAshRgBOHjgq-VF9tt2qFKLuENiNbPHCY8
+
+ksetup /setcomputerpassword &lt;abcd&gt;
+</code></pre>
+<h4 id="initial-scan-ffuf">Initial scan ffuf</h4>
+<pre><code>ffuf -u $URL/FUZZ -w /share/Wordlists/webcontent-top-10000.txt -recursion -raw -fc 404,403,400,500 -e .php,.html,.bac,.bak,.txt,.csv,.backup,.vim,.sql -fs 14 -v |grep -oP '(htt.*)'
+</code></pre>
 <h2 id="ansible">Ansible</h2>
 <h3 id="password-change-without-exposing-password-to-process-list-on-ansible-managed-node">password change without exposing password to process list on ansible managed node</h3>
 <pre><code>ansible-playbook -i localhost, ../othertools/ansible/change-shadow.yaml -u ansible -b --become-password-file /root/becomefile -e user=root -e "pass=$(openssl passwd -6 passwd)"
