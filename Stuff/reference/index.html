@@ -191,6 +191,9 @@ nmcli con add type ethernet ifname eth0 ipv4.method shared con-name "internetSha
 <pre><code>nmcli connection modify "MyConnection" connection.interface-name eth0
 </code></pre>
 <h2 id="pentesting-forensics">pentesting &amp; forensics</h2>
+<h3 id="repolist-for-fun-and-profit">repolist for fun and profit</h3>
+<pre><code>for each in `curl -s -L https://api.github.com/orgs/$ORG/repos  |jq ".[]|.html_url"|sed s/'"'//g`; do repolist -u $each|sed s/"\/"/"\n"/g; done |sort -u &gt;&gt; wordlist
+</code></pre>
 <h3 id="bounty-targets">Bounty Targets</h3>
 <pre><code>git clone https://github.com/arkadiyt/bounty-targets-data
 
@@ -202,7 +205,7 @@ awk -F "," '{print $2}' */waymore_index.txt|awk -F "//" '{$1=$2=""; print $0}'|s
 
 grep -hEo "(http|https)://[a-zA-Z0-9./?=_%:-]*" scrape-*-log|sed s/"%5C$"//g|sed s/"%5C%5C$"//g|sort -u
 </code></pre>
-<h4 id="javascript-deobfuscate">Javascript Deobfuscate</h4>
+<h3 id="javascript-deobfuscate">Javascript Deobfuscate</h3>
 <pre><code>docker run -d --rm --name jsdetox -p 3000:3000 docker.io/remnux/jsdetox
 
 docker run -d --rm -p 4000:4000 -p 35729:35729 --name docker.io/de4js remnux/de4js
@@ -210,7 +213,7 @@ docker run -d --rm -p 4000:4000 -p 35729:35729 --name docker.io/de4js remnux/de4
 https://tungcsv.github.io/de4js/
 
 </code></pre>
-<h4 id="afl-such">afl &amp; such</h4>
+<h3 id="afl-such">afl &amp; such</h3>
 <pre><code>had to note this somewhere, dumb fuzzing, smart parameter finding:
 
 llm prompt: 
@@ -252,76 +255,76 @@ n=1; for each in `sed s/"^[0-9a-zA-Z.]* "/""/g list|grep -iv "#"|sort -u`; do ec
 116  134  152  170  189  206  224  242  260  279  297  314  332  350  369  387  404  422  440  459  477  495  512  530  68   86
 &gt; afl-fuzz  -i input -o output -n -D -- ./dnscapture -a @@
 </code></pre>
-<h4 id="jwt">JWT</h4>
+<h3 id="jwt">JWT</h3>
 <pre><code>docker run -it --network "host" --rm -v "${PWD}:/tmp" -v "${HOME}/.jwt_tool:/root/.jwt_tool" docker.io/ticarpi/jwt_tool
 </code></pre>
-<h4 id="binwalk-extract-everything">Binwalk extract everything</h4>
+<h3 id="binwalk-extract-everything">Binwalk extract everything</h3>
 <pre><code>binwalk --dd='.*' --run-as=root /root/resources.arsc
 </code></pre>
-<h4 id="bucket-search-aws">Bucket Search AWS</h4>
+<h3 id="bucket-search-aws">Bucket Search AWS</h3>
 <pre><code>aws s3 ls --no-sign-request --recursive s3://cf-courses-data/ --endpoint-url=https://s3.us.cloud-object-storage.appdomain.cloud
 aws s3 sync --no-sign-request --recursive s3://cf-courses-data/ --endpoint-url=https://s3.us.cloud-object-storage.appdomain.cloud .
 aws configure --profile whatever
 aws s3 ls s3://whatever --profile whatever
 </code></pre>
-<h4 id="firebase-enum">firebase enum</h4>
+<h3 id="firebase-enum">firebase enum</h3>
 <pre><code>git clone https://github.com/Sambal0x/firebaseEnum
 ./firebaseenum.py -k searchterm
 </code></pre>
-<h4 id="smtp-server">smtp server</h4>
+<h3 id="smtp-server">smtp server</h3>
 <pre><code>python3 -m smtpd -n -c DebuggingServer 0.0.0.0:25
 </code></pre>
-<h4 id="iptables-for-zapburp">Iptables for zap/burp</h4>
+<h3 id="iptables-for-zapburp">Iptables for zap/burp</h3>
 <pre><code>
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080; iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8080;
 
 </code></pre>
-<h4 id="run-initial-scan">Run initial scan</h4>
+<h3 id="run-initial-scan">Run initial scan</h3>
 <pre><code>/share/public-git-repos/automation-tools/sanitize.sh; papermill --stdout-file /tmp/initial-scan.output /share/public-git-repos/automation-tools/initial-scans.ipynb /tmp/initial-scan.json -p input_data 10.13.37.14
 </code></pre>
-<h4 id="caido-docker">Caido Docker</h4>
+<h3 id="caido-docker">Caido Docker</h3>
 <pre><code>podman run --rm -p 8080:8080 --userns=keep-id -v /caido:/home/caido/.local/share/caido -m 2g --memory-swap 2g docker.io/caido/caido:latest
 </code></pre>
-<h4 id="unknown-ciphers-encryption">unknown ciphers / encryption:</h4>
+<h3 id="unknown-ciphers-encryption">unknown ciphers / encryption:</h3>
 <pre><code>
 podman run -it --rm docker.io/remnux/ciphey {text}
 
 </code></pre>
-<h4 id="chrome-driver-with-listening-port">chrome driver with listening port</h4>
+<h3 id="chrome-driver-with-listening-port">chrome driver with listening port</h3>
 <pre><code>
 tmux new-session -d "chromedriver --port=4444 --disable-dev-shm-usage"
 
 </code></pre>
-<h4 id="scan-for-and-validate-ibmcloud-apikeys-bash-version">scan for and validate ibmcloud apikeys (bash version)</h4>
+<h3 id="scan-for-and-validate-ibmcloud-apikeys-bash-version">scan for and validate ibmcloud apikeys (bash version)</h3>
 <pre><code>for apikey in `grep -iroEh "([a-zA-Z0-9]{28,40}[_-][a-zA-Z0-9]{4,15})" /tmp/truffle* 2&gt;/dev/null`; do token=`curl https://iam.cloud.ibm.com/identity/token -X POST -d "apikey=$apikey&amp;grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&amp;response_type=cloud_iam" -s|grep -i access_token|awk -F '"' '{print $4}'`; curl -s -X GET https://iam.cloud.ibm.com/v1/apikeys -H "Authorization: Bearer $token"|jq '.apikeys[]|.id' 2&gt;/dev/null; done
 </code></pre>
-<h4 id="api-testing">API Testing</h4>
+<h3 id="api-testing">API Testing</h3>
 <pre><code>github.com/yogsec/API-Pentesting-Tools
 </code></pre>
-<h4 id="buckets-by-provider">Buckets by provider:</h4>
+<h3 id="buckets-by-provider">Buckets by provider:</h3>
 <pre><code>ibm: s3.(region).cloud-object-storage.appdomain.cloud
 aws: s3.amazonaws.com
 digitalocean: (region).digitaloceanspaces.com
 google: storage.googleapis.com
 </code></pre>
-<h4 id="exfil-open-buckets">Exfil open buckets</h4>
+<h3 id="exfil-open-buckets">Exfil open buckets</h3>
 <pre><code>domain=s3domain; /root/.pdtm/go/bin/pdtm -ia; /root/.pdtm/go/bin/pdtm -ua ;for i in `subfinder -max-time 100 -silent -recursive -d $domain |awk -F "\.$domain" '{print $1}' |sort -u`; do mkdir $i &amp;&amp; cd $i &amp;&amp; aws s3 sync --no-sign-request s3://$i/ --endpoint-url=https://$domain . ; cd /share/pentests/bugbounty/ibm/alternative-bucket/yetanother/; done; find . -type d -empty -delete
 </code></pre>
-<h4 id="pixelation">pixelation</h4>
+<h3 id="pixelation">pixelation</h3>
 <pre><code class="language-sh">python3 depix.py \
     -p /path/to/your/input/image.png \
     -s images/searchimages/debruinseq_notepad_Windows10_closeAndSpaced.png \
     -o /path/to/your/output.png
 </code></pre>
-<h4 id="wpscan">wpscan</h4>
+<h3 id="wpscan">wpscan</h3>
 <pre><code>wpscan --rua --plugins-detection aggressive --plugins-version-detection aggressive -e ap,u,dbe,at,cb --proxy http://192.168.56.1:8080 --detection-mode aggressive --disable-tls-checks --throttle 1 --headers "X-HackerOne-Research: ferasdour" --url replaceme
 </code></pre>
-<h4 id="kerb-local-to-domain-creds">kerb local to domain creds</h4>
+<h3 id="kerb-local-to-domain-creds">kerb local to domain creds</h3>
 <pre><code>https://www.linkedin.com/posts/giulio-pierantoni-036792178_are-you-the-local-admin-of-a-domain-host-activity-7338264538112319490-APYu?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACAshRgBOHjgq-VF9tt2qFKLuENiNbPHCY8
 
 ksetup /setcomputerpassword &lt;abcd&gt;
 </code></pre>
-<h4 id="initial-scan-ffuf">Initial scan ffuf</h4>
+<h3 id="initial-scan-ffuf">Initial scan ffuf</h3>
 <pre><code>ffuf -u $URL/FUZZ -w /share/Wordlists/webcontent-top-10000.txt -recursion -raw -fc 404,403,400,500 -e .php,.html,.bac,.bak,.txt,.csv,.backup,.vim,.sql -fs 14 -v |grep -oP '(htt.*)'
 </code></pre>
 <h2 id="ansible">Ansible</h2>
