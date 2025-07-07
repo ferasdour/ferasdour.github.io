@@ -146,6 +146,9 @@
 <h4 id="find-domains-that-resolve-to-local-ips">Find domains that resolve to local ips</h4>
 <pre><code>subfinder -rl 50 -all -silent -d lb.appdomain.cloud &gt; /tmp/subdomains; for i in `cat /tmp/subdomains`; do dig +all $i |grep -i "IN A\|DIG "| grep -B1 -iE "(192\.168\.[0-9]{1,3}\.[0-9]{1,3}|10\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|172\.1[6789]\.\.[0-9]{1,3}\.[0-9]{1,3}|172\.2[0-9]\.|172\.3[01]\.\.[0-9]{1,3}\.[0-9]{1,3})"; done |grep -i "+all" |awk '{print $7}'
 </code></pre>
+<h3 id="merge-json-files">merge json files</h3>
+<pre><code>jq -s '.[0] * .[1]' test2.json counts.json &gt; test1.json
+</code></pre>
 <h4 id="added-memory-because-memory">Added memory because memory</h4>
 <pre><code>dd if=/dev/zero of=/swapfile bs=1GB count=40
 mkswap /swapfile
@@ -212,6 +215,12 @@ docker run -d --rm -p 4000:4000 -p 35729:35729 --name docker.io/de4js remnux/de4
 
 https://tungcsv.github.io/de4js/
 
+</code></pre>
+<h3 id="run-beacon-heatmap-all-interfaces">run beacon-heatmap all interfaces</h3>
+<pre><code>for i in `iw dev|grep -i interface|awk '{print $2}'`; do ifconfig $i down; iwconfig $i mode monitor; ifconfig $i up; tmux new-session -s heatmap-$i -d "cd /share/git-repo/scapy-monitor; python3 beacon-heatmap.py --iface $i -m 0 --db test-$i.json"; done
+
+#then to view:
+jq -s '.[0] * .[1]' test*.json &gt; counts.json; python3 beacon-heatmap.py --nopcap --mac 5e:00:f1:50:23:fe --db counts.json; ristretto heatmap.png &amp;
 </code></pre>
 <h3 id="afl-such">afl &amp; such</h3>
 <pre><code>had to note this somewhere, dumb fuzzing, smart parameter finding:
