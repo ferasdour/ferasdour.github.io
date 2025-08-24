@@ -225,6 +225,10 @@ https://tungcsv.github.io/de4js/
 #then to view:
 jq -s '.[0] * .[1]' test*.json &gt; counts.json; python3 beacon-heatmap.py --nopcap --mac 5e:00:f1:50:23:fe --db counts.json; ristretto heatmap.png &amp;
 </code></pre>
+<h3 id="vhost-whatweb">vhost whatweb</h3>
+<pre><code>whatweb 10.129.130.98 -H "Host: app.inlanefreight.local"
+
+</code></pre>
 <h3 id="afl-such">afl &amp; such</h3>
 <pre><code>had to note this somewhere, dumb fuzzing, smart parameter finding:
 
