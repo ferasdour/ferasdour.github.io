@@ -185,8 +185,11 @@ dpkg-scanpackages /share/vms/images/debs/ /dev/null | gzip -9c &gt; /share/vms/i
 <h4 id="uptime-check-network-validation">uptime check &amp; network validation</h4>
 <pre><code>nmap -sS -p22 --open -Pn -n `ip address show dev $(virsh net-info default|grep -i bridge |awk '{print $2}')|grep -i inet|awk '{print $2}'`|grep -i "report for" |awk '{print $5}' &gt; /tmp/virtnmap; for i in `cat /tmp/virtnmap`; do ssh-keyscan -H $i &gt; ~/.ssh/known_hosts 2&gt;/dev/null; ansible $i -i /tmp/virtnmap -a "uptime" -T 30 -u ansible -b; done
 </code></pre>
+<h4 id="libre-office-convert-windows">Libre office convert - windows</h4>
+<pre><code>&amp; 'C:\Program Files\LibreOffice\program\swriter.exe' --headless --convert-to pdf --outdir .\pdfs\ .\Jeffre_Feemster_SOC_Analyst.docx
+</code></pre>
 <h4 id="watch-vm-lists">Watch vm lists</h4>
-<pre><code>watch "echo '\nTMUX SESSIONS:\n';tmux list-sessions; echo '\nVMS:\n'; virsh list --all|grep -i private; echo '\nIP ADDRESSES:\n'; virsh net-dhcp-leases default|grep -owE '[0-9.]{7,20}'"
+<pre><code>```watch "echo '\nTMUX SESSIONS:\n';tmux list-sessions; echo '\nVMS:\n'; virsh list --all|grep -i private; echo '\nIP ADDRESSES:\n'; virsh net-dhcp-leases default|grep -owE '[0-9.]{7,20}'"
 </code></pre>
 <h4 id="nmcli-hotspot">nmcli hotspot</h4>
 <pre><code>nmcli dev wifi hotspot ifname wlan1 ssid testmeta password metatest
